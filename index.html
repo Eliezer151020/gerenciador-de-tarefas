@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <aside id="barra-lateral">
+        <h2>TaskManager</h2>
+
+        <nav id="menu">
+            <a href="#inicio" data-pagina="inicio">Início</a>
+            <a href="#tarefas" data-pagina="tarefas" class="ativo">Minhas tarefas</a>
+            <a href="#concluidas" data-pagina="concluidas">Concluídas</a>
+            <a href="#configuracoes" data-pagina="configuracoes">Configurações</a>
+            <a href="#login" data-pagina="login">Login</a>
+        </nav>
+    </aside>
+
+    <main id="conteudo">
+
+        <section id="inicio" class="pagina" hidden>
+            <h1>Início</h1>
+            <p class="subtitulo">Bem-vindo ao TaskManager</p>
+
+            <div class="painel">
+                <h2>Resumo das atividades</h2>
+                <p id="resumo">Nenhuma tarefa cadastrada.</p>
+            </div>
+        </section>
+
+        <section id="tarefas" class="pagina">
+            <h1 id="titulo">Minhas tarefas</h1>
+            <p class="subtitulo">Organize suas atividades diárias</p>
+
+            <form id="formulario">
+                <input
+                    type="text"
+                    id="tarefa"
+                    placeholder="Digite uma tarefa..."
+                    maxlength="150"
+                    required
+                >
+                <button type="submit" id="adicionar">
+                    Adicionar +
+                </button>
+            </form>
+
+            <div class="painel">
+                <h2>Lista de tarefas</h2>
+                <ul id="lista-tarefas"></ul>
+                <p id="mensagem-vazia">Nenhuma tarefa adicionada.</p>
+            </div>
+        </section>
+
+        <section id="concluidas" class="pagina" hidden>
+            <h1>Tarefas concluídas</h1>
+            <p class="subtitulo">Suas atividades finalizadas</p>
+
+            <div class="painel">
+                <ul id="lista-concluidas"></ul>
+            </div>
+        </section>
+
+        <section id="configuracoes" class="pagina" hidden>
+            <h1>Configurações</h1>
+            <div class="painel">
+                <p>Configurações em desenvolvimento.</p>
+            </div>
+        </section>
+
+        <section id="login" class="pagina" hidden>
+            <h1>Login</h1>
+            <div class="painel">
+                <p>Área de login em desenvolvimento.</p>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
