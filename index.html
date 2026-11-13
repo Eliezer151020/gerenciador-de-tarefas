@@ -4,81 +4,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador de Tarefas</title>
+
+    <title>Gerenciador de Tarefas | TaskManager</title>
+
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
 
+    <!-- =====================================
+         MENU LATERAL
+    ====================================== -->
+
     <aside id="barra-lateral">
+
         <h2>TaskManager</h2>
 
         <nav id="menu">
-            <a href="#inicio" data-pagina="inicio">Início</a>
-            <a href="#tarefas" data-pagina="tarefas" class="ativo">Minhas tarefas</a>
-            <a href="#concluidas" data-pagina="concluidas">Concluídas</a>
-            <a href="#configuracoes" data-pagina="configuracoes">Configurações</a>
-            <a href="#login" data-pagina="login">Login</a>
+
+            <a href="#inicio"
+               data-pagina="inicio">
+                Início
+            </a>
+
+            <a href="#tarefas"
+               data-pagina="tarefas"
+               class="ativo">
+                Minhas tarefas
+            </a>
+
+            <a href="#concluidas"
+               data-pagina="concluidas">
+                Concluídas
+            </a>
+
+            <a href="#configuracoes"
+               data-pagina="configuracoes">
+                Configurações
+            </a>
+
+            <a href="#login"
+               data-pagina="login">
+                Login
+            </a>
+
         </nav>
+
     </aside>
+
+    <!-- =====================================
+         CONTEÚDO PRINCIPAL
+    ====================================== -->
 
     <main id="conteudo">
 
+        <!-- =================================
+             PÁGINA INICIAL
+        ================================== -->
+
         <section id="inicio" class="pagina" hidden>
+
             <h1>Início</h1>
-            <p class="subtitulo">Bem-vindo ao TaskManager</p>
+
+            <p class="subtitulo">
+                Bem-vindo ao TaskManager
+            </p>
 
             <div class="painel">
+
                 <h2>Resumo das atividades</h2>
-                <p id="resumo">Nenhuma tarefa cadastrada.</p>
+
+                <p id="resumo">
+                    Nenhuma tarefa cadastrada.
+                </p>
+
             </div>
+
         </section>
 
+        <!-- =================================
+             PÁGINA DE TAREFAS
+        ================================== -->
+
         <section id="tarefas" class="pagina">
+
             <h1 id="titulo">Minhas tarefas</h1>
-            <p class="subtitulo">Organize suas atividades diárias</p>
+
+            <p class="subtitulo">
+                Organize suas atividades diárias
+            </p>
+
+            <!-- FORMULÁRIO DE CADASTRO -->
 
             <form id="formulario">
+
+                <!-- NOME DA TAREFA -->
+
                 <input
                     type="text"
                     id="tarefa"
+                    name="tarefa"
                     placeholder="Digite uma tarefa..."
                     maxlength="150"
+                    aria-label="Nome da tarefa"
                     required
                 >
-                <button type="submit" id="adicionar">
+
+                <!-- PRIORIDADE DA TAREFA -->
+
+                <select
+                    id="prioridade"
+                    name="prioridade"
+                    aria-label="Prioridade da tarefa"
+                >
+
+                    <option value="baixa">
+                        Prioridade baixa
+                    </option>
+
+                    <option value="media" selected>
+                        Prioridade média
+                    </option>
+
+                    <option value="alta">
+                        Prioridade alta
+                    </option>
+
+                </select>
+
+                <!-- BOTÃO ADICIONAR -->
+
+                <button
+                    type="submit"
+                    id="adicionar"
+                >
                     Adicionar +
                 </button>
+
             </form>
 
+            <!-- =================================
+                 PAINEL DE TAREFAS
+            ================================== -->
+
             <div class="painel">
+
                 <h2>Lista de tarefas</h2>
+
+                <!-- FILTROS DE TAREFAS -->
+
+                <div
+                    class="filtros-tarefas"
+                    role="group"
+                    aria-label="Filtrar tarefas"
+                >
+
+                    <!-- TODAS -->
+
+                    <button
+                        type="button"
+                        class="filtro ativo"
+                        data-filtro="todas"
+                        aria-pressed="true"
+                    >
+                        Todas
+                    </button>
+
+                    <!-- PENDENTES -->
+
+                    <button
+                        type="button"
+                        class="filtro"
+                        data-filtro="pendentes"
+                        aria-pressed="false"
+                    >
+                        Pendentes
+                    </button>
+
+                    <!-- CONCLUÍDAS -->
+
+                    <button
+                        type="button"
+                        class="filtro"
+                        data-filtro="concluidas"
+                        aria-pressed="false"
+                    >
+                        Concluídas
+                    </button>
+
+                </div>
+
+                <!-- LISTA DE TAREFAS -->
+
                 <ul id="lista-tarefas"></ul>
-                <p id="mensagem-vazia">Nenhuma tarefa adicionada.</p>
+
+                <!-- MENSAGEM DE LISTA VAZIA -->
+
+                <p id="mensagem-vazia">
+                    Nenhuma tarefa adicionada.
+                </p>
+
             </div>
+
         </section>
 
-        <section id="concluidas" class="pagina" hidden>
+        <!-- =================================
+             PÁGINA DE TAREFAS CONCLUÍDAS
+        ================================== -->
+
+        <section
+            id="concluidas"
+            class="pagina"
+            hidden
+        >
+
             <h1>Tarefas concluídas</h1>
-            <p class="subtitulo">Suas atividades finalizadas</p>
+
+            <p class="subtitulo">
+                Suas atividades finalizadas
+            </p>
 
             <div class="painel">
+
                 <ul id="lista-concluidas"></ul>
+
             </div>
+
         </section>
 
-        <section id="configuracoes" class="pagina" hidden>
+        <!-- =================================
+             CONFIGURAÇÕES
+        ================================== -->
+
+        <section
+            id="configuracoes"
+            class="pagina"
+            hidden
+        >
+
             <h1>Configurações</h1>
+
             <div class="painel">
-                <p>Configurações em desenvolvimento.</p>
+
+                <p>
+                    Configurações em desenvolvimento.
+                </p>
+
             </div>
+
         </section>
 
-        <section id="login" class="pagina" hidden>
+        <!-- =================================
+             LOGIN
+        ================================== -->
+
+        <section
+            id="login"
+            class="pagina"
+            hidden
+        >
+
             <h1>Login</h1>
+
             <div class="painel">
-                <p>Área de login em desenvolvimento.</p>
+
+                <p>
+                    Área de login em desenvolvimento.
+                </p>
+
             </div>
+
         </section>
 
     </main>

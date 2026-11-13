@@ -1,5 +1,8 @@
 
-/* CONFIGURAÇÕES GERAIS */
+/* ========================================
+   CONFIGURAÇÕES GERAIS
+======================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +16,10 @@ body {
     min-height: 100vh;
 }
 
-/* BARRA LATERAL */
+/* ========================================
+   BARRA LATERAL
+======================================== */
+
 #barra-lateral {
     position: fixed;
     top: 0;
@@ -32,7 +38,10 @@ body {
     text-align: center;
 }
 
-/* MENU */
+/* ========================================
+   MENU DE NAVEGAÇÃO
+======================================== */
+
 #menu {
     display: flex;
     flex-direction: column;
@@ -55,7 +64,10 @@ body {
     color: #ffffff;
 }
 
-/* CONTEÚDO PRINCIPAL */
+/* ========================================
+   CONTEÚDO PRINCIPAL
+======================================== */
+
 #conteudo {
     margin-left: 230px;
     padding: 45px 30px;
@@ -72,7 +84,10 @@ body {
     display: none;
 }
 
-/* TÍTULOS */
+/* ========================================
+   TÍTULOS
+======================================== */
+
 h1 {
     color: #ffffff;
     text-align: center;
@@ -87,7 +102,10 @@ h1 {
     margin-bottom: 35px;
 }
 
-/* FORMULÁRIO */
+/* ========================================
+   FORMULÁRIO DE TAREFAS
+======================================== */
+
 #formulario {
     display: flex;
     gap: 12px;
@@ -97,7 +115,6 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* CAMPO DE TEXTO */
 #tarefa {
     flex: 1;
     min-width: 0;
@@ -112,22 +129,49 @@ h1 {
     border-color: #93b9ff;
 }
 
-/* BOTÃO */
+/* ========================================
+   SELETOR DE PRIORIDADE
+======================================== */
+
+#prioridade {
+    padding: 12px;
+    background-color: #19283e;
+    color: #ffffff;
+    border: 1px solid #64748b;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    min-width: 160px;
+}
+
+#prioridade:focus {
+    border-color: #93b9ff;
+    outline: none;
+}
+
+/* ========================================
+   BOTÃO ADICIONAR
+======================================== */
+
 #adicionar {
     background-color: #3965c9;
-    color: white;
+    color: #ffffff;
     padding: 14px 22px;
     border: none;
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 #adicionar:hover {
     background-color: #547fe0;
 }
 
-/* PAINEL */
+/* ========================================
+   PAINÉIS
+======================================== */
+
 .painel {
     background-color: #1b2940;
     padding: 25px;
@@ -139,7 +183,44 @@ h1 {
     margin-bottom: 22px;
 }
 
-/* LISTA */
+/* ========================================
+   FILTROS DE TAREFAS
+======================================== */
+
+.filtros-tarefas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.filtro {
+    padding: 10px 18px;
+    background-color: #293b52;
+    color: #ffffff;
+    border: 1px solid #3b4d65;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition:
+        background-color 0.2s,
+        border-color 0.2s;
+}
+
+.filtro:hover {
+    background-color: #355276;
+}
+
+.filtro.ativo {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff;
+}
+
+/* ========================================
+   LISTAS DE TAREFAS
+======================================== */
+
 #lista-tarefas,
 #lista-concluidas {
     list-style: none;
@@ -160,26 +241,174 @@ h1 {
     overflow-wrap: anywhere;
 }
 
-.item-tarefa.concluida span {
+/* TAREFA CONCLUÍDA */
+
+.item-tarefa.concluida span:not(.prioridade) {
     text-decoration: line-through;
     color: #a0abc1;
 }
 
+/* CHECKBOX */
+
+.item-tarefa input[type="checkbox"] {
+    cursor: pointer;
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    accent-color: #3b82f6;
+}
+
+/* ========================================
+   INDICADORES DE PRIORIDADE
+======================================== */
+
+.item-tarefa .prioridade {
+    flex: 0 0 auto;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow-wrap: normal;
+}
+
+/* PRIORIDADE ALTA - VERMELHO */
+
+.item-tarefa .prioridade-alta {
+    background-color: #7f1d1d;
+    color: #fecaca;
+}
+
+/* PRIORIDADE MÉDIA - AMARELO */
+
+.item-tarefa .prioridade-media {
+    background-color: #78350f;
+    color: #fde68a;
+}
+
+/* PRIORIDADE BAIXA - VERDE */
+
+.item-tarefa .prioridade-baixa {
+    background-color: #14532d;
+    color: #bbf7d0;
+}
+
+/* NÃO RISCAR INDICADORES DE PRIORIDADE */
+
+.item-tarefa.concluida .prioridade {
+    text-decoration: none;
+}
+
+/* ========================================
+   BOTÕES DAS TAREFAS
+======================================== */
+
 .item-tarefa button {
     background-color: #b83c48;
-    color: white;
+    color: #ffffff;
     border: none;
-    padding: 9px;
+    padding: 9px 12px;
     border-radius: 6px;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
+
+.item-tarefa button:hover {
+    background-color: #d14b58;
+}
+
+/* ========================================
+   CAMPO DE EDIÇÃO
+======================================== */
+
+.campo-edicao {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #111827;
+    font-size: 16px;
+    outline: none;
+}
+
+.campo-edicao:focus {
+    border-color: #60a5fa;
+}
+
+/* ========================================
+   BOTÃO SALVAR
+======================================== */
+
+.item-tarefa .botao-salvar {
+    padding: 10px 15px;
+    background-color: #16a34a;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.item-tarefa .botao-salvar:hover {
+    background-color: #15803d;
+}
+
+/* ========================================
+   BOTÃO CANCELAR
+======================================== */
+
+.item-tarefa .botao-cancelar {
+    padding: 10px 15px;
+    background-color: #64748b;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.item-tarefa .botao-cancelar:hover {
+    background-color: #475569;
+}
+
+/* ========================================
+   MENSAGEM DE LISTA VAZIA
+======================================== */
 
 #mensagem-vazia {
     color: #a0abc1;
+    margin-top: 15px;
 }
 
-/* CELULARES */
+/* ========================================
+   ELEMENTOS OCULTOS
+======================================== */
+
+.item-tarefa [hidden] {
+    display: none !important;
+}
+
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid #93b9ff;
+    outline-offset: 3px;
+}
+
+/* ========================================
+   RESPONSIVIDADE - TABLETS E CELULARES
+======================================== */
+
 @media (max-width: 700px) {
+
     #barra-lateral {
         position: static;
         width: 100%;
@@ -213,7 +442,82 @@ h1 {
         padding: 18px;
     }
 
+    #prioridade {
+        width: 100%;
+    }
+
     h1 {
         font-size: 26px;
+    }
+
+    .painel {
+        padding: 18px;
+    }
+}
+
+/* ========================================
+   RESPONSIVIDADE - CELULARES PEQUENOS
+======================================== */
+
+@media (max-width: 600px) {
+
+    .item-tarefa {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .item-tarefa span:not(.prioridade) {
+        min-width: 0;
+    }
+
+    .campo-edicao {
+        flex-basis: 100%;
+        width: 100%;
+    }
+
+    .filtros-tarefas {
+        gap: 8px;
+    }
+
+    .filtro {
+        flex: 1;
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    #adicionar {
+        width: 100%;
+    }
+
+    .item-tarefa .prioridade {
+        font-size: 11px;
+        padding: 5px 8px;
+    }
+}
+
+/* ========================================
+   ETAPA 5 - EDITAR PRIORIDADE
+======================================== */
+
+.prioridade-edicao {
+    padding: 10px 12px;
+    background-color: #19283e;
+    color: #ffffff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    font-size: 14px;
+    min-width: 100px;
+    cursor: pointer;
+}
+
+.prioridade-edicao:focus {
+    outline: 2px solid #93b9ff;
+    outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+    .prioridade-edicao {
+        flex: 1;
+        min-width: 0;
     }
 }
